@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         // This is our entry point, the main JavaScript file
-        app: './src/main.js',
+        app: './src/main.ts',
     },
     output: {
         // This is our output file, 
@@ -43,5 +43,17 @@ module.exports = {
                 }
             ]
         })
-    ]
+    ],
+    // List of extensions to resolve, in resolve order
+    resolve: {
+        extensions: [ '.ts', '.tsx', '.js' ]
+    },
+    // Loader to handle TypeScript file type
+    module: {
+        rules: [{
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
+        }]
+    }
 }

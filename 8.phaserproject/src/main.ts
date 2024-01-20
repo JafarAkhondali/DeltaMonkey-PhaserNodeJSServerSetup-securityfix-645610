@@ -1,6 +1,9 @@
 import 'phaser';
 
 class PlayGame extends Phaser.Scene {
+
+    image: Phaser.GameObjects.Image;
+
     constructor() {
         super('PlayGame');
     }
@@ -18,11 +21,15 @@ class PlayGame extends Phaser.Scene {
     }
 }
 
-let config = {
-    widht: 800,
-    height: 600,
-    parent: 'thegame',
+let configObject: Phaser.Types.Core.GameConfig = {
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        parent: 'thegame',
+        width: 800,
+        height: 600,
+    },
     scene: PlayGame
 };
 
-new Phaser.Game(config);
+new Phaser.Game(configObject);
